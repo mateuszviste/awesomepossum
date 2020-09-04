@@ -1,0 +1,12 @@
+
+TODO
+
+ - Level editor (scrolling the map, arrows icons)
+ - collision detection for sides and above
+ - don't allow to jump when in the air
+ - shooting
+ - enemies
+ - scrolling the world (need to do vertical scrolling,
+ - different friction on different materials (ice, goo...)
+ - sound
+ - tiles with partial collisions (ramps...)
