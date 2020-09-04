@@ -260,7 +260,7 @@ void compute_neighbors(struct worldstruct *world, struct character *player, stru
 /* computes all the physics in the world */
 void run_engine(struct worldstruct *world, struct character *player, int elapsed_time, struct spritesstruct *sprites, struct virtualkeyboard *keybstate) {
   #define gravityforce          1800    /* I gain this much falling momentum per ms when in the air */
-  #define frictionforce_ground  300     /* I loose this much horizontal momentum per ms when on the ground */
+  #define frictionforce_ground  400     /* I loose this much horizontal momentum per ms when on the ground */
   #define frictionforce_air     150     /* I loose this much horizontal momentum per ms when in the air */
   #define maxvvelocity          600000  /* I cannot go up faster than that */
   #define minvvelocity         -600000  /* I cannot fall faster than that */
@@ -363,8 +363,8 @@ void run_engine(struct worldstruct *world, struct character *player, int elapsed
       keybstate->jump = 0;
     }
   }
-  if (keybstate->left != 0) player->velocityx -= (frictionforce * 2 * elapsed_time);
-  if (keybstate->right != 0) player->velocityx += (frictionforce * 2 * elapsed_time);
+  if (keybstate->left != 0) player->velocityx -= (frictionforce * 3 * elapsed_time);
+  if (keybstate->right != 0) player->velocityx += (frictionforce * 3 * elapsed_time);
 
   /* limit max velocity (speed) */
   if (player->velocityx < minhvelocity) player->velocityx = minhvelocity;
@@ -385,7 +385,7 @@ void run_engine(struct worldstruct *world, struct character *player, int elapsed
 }
 
 
-int main() {
+int main(void) {
   struct worldstruct world;  /* the world is a set of 64x64 tiles */
   int x, y, z, elapsed_time, exitflag = 0;
   struct virtualkeyboard keybstate;
